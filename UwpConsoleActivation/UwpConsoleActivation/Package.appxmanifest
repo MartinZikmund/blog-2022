@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  IgnorableNamespaces="uap mp uap5">
+
+	<Identity
+	  Name="359f695b-4b0e-40b7-b776-460457c37aca"
+	  Publisher="CN=Martin"
+	  Version="1.0.0.0" />
+
+	<mp:PhoneIdentity PhoneProductId="359f695b-4b0e-40b7-b776-460457c37aca" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+	<Properties>
+		<DisplayName>UwpConsoleActivation</DisplayName>
+		<PublisherDisplayName>Martin</PublisherDisplayName>
+		<Logo>Assets\StoreLogo.png</Logo>
+	</Properties>
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+	</Dependencies>
+
+	<Resources>
+		<Resource Language="x-generate"/>
+	</Resources>
+
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="UwpConsoleActivation.App">
+			<uap:VisualElements
+			  DisplayName="UwpConsoleActivation"
+			  Square150x150Logo="Assets\Square150x150Logo.png"
+			  Square44x44Logo="Assets\Square44x44Logo.png"
+			  Description="UwpConsoleActivation"
+			  BackgroundColor="transparent">
+				<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
+				<uap:SplashScreen Image="Assets\SplashScreen.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<uap5:Extension
+					Category="windows.appExecutionAlias"
+					Executable="UwpConsoleActivation.exe"
+					EntryPoint="UwpConsoleActivation.App">
+					<uap5:AppExecutionAlias>
+						<uap5:ExecutionAlias Alias="UwpConsoleActivation.exe" />
+					</uap5:AppExecutionAlias>
+				</uap5:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<Capability Name="internetClient" />
+	</Capabilities>
+</Package>

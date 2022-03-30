@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "WinAppSdkConsoleActivation (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": true
+    },
+    "WinAppSdkConsoleActivation (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
