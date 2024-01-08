@@ -9,8 +9,8 @@ namespace UnoGamepad
 
         public GamepadViewModel(Gamepad gamepad)
         {
-            Id = ++_id;
-            Gamepad = gamepad;
+            Gamepad = gamepad ?? throw new System.ArgumentNullException(nameof(gamepad));
+            Id = ++_id;            
         }
         
         public Gamepad Gamepad { get; }

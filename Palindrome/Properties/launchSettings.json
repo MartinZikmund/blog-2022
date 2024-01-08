@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Palindrome": {
+      "commandName": "Project",
+      "commandLineArgs": "51"
+    }
+  }
+}

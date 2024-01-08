@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Uno.Extensions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Gaming.Input;
@@ -32,13 +36,15 @@ namespace UnoGamepad
             
             Gamepad.GamepadAdded += GamepadsChanged;
             Gamepad.GamepadRemoved += GamepadsChanged;
-
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
             _timer.Tick += OnGamepadReadingUpdate;
             _timer.Start();
+            UpdateGamepadsAsync();
         }
 
         private void OnGamepadReadingUpdate(object sender, object e)
         {
+            await UpdateGamepadsAsync();
             foreach(var gamepad in Gamepads)
             {
                 gamepad.Update();
@@ -47,12 +53,12 @@ namespace UnoGamepad
 
         public ObservableCollection<GamepadViewModel> Gamepads { get; } = new ObservableCollection<GamepadViewModel>();
 
-        private void GamepadsChanged(object sender, Gamepad e)
+        private async void GamepadsChanged(object sender, Gamepad e)
         {
-            UpdateGamepads();
+            await UpdateGamepadsAsync();
         }
 
-        private async void UpdateGamepads()
+        private async Task UpdateGamepadsAsync()
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
